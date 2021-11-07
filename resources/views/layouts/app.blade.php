@@ -18,14 +18,86 @@
 
         @livewireStyles
 
+        <style>
+
+        body{
+            margin: 0;
+            padding: 0;
+            background-color:#2b2b2b;
+        }
+
+            @media(min-width: 992px) {
+                .dropdown-menu .dropdown-toggle:after {
+                    border-top: 0.3em solid transparent;
+                    border-right: 0;
+                    border-bottom: 0.3em solid transparent;
+                    border-left: 0.3em solid;
+                }
+                .dropdown-menu .dropdown-menu {
+                    margin-left: 0;
+                    margin-right: 0;
+                }
+                .dropdown-menu li {
+                    position: relative;
+                }
+                .nav-item .submenu {
+                    display: none;
+                    position: absolute;
+                    left: 100%;
+                    top: -7px;
+                }
+                .nav-item .submenu-left {
+                    right: 100%;
+                    left: auto;
+                }
+                .dropdown-menu > li:hover {
+                    background-color: #f1f1f1
+                }
+                .dropdown-menu > li:hover > .submenu {
+                    display: block;
+                }
+            }
+            @media(max-width: 992px) {
+                .dropdown-menu .dropdown-toggle:after {
+                    border-top: 0.3em solid transparent;
+                    border-right: 0;
+                    border-bottom: 0.3em solid transparent;
+                    border-left: 0.3em solid;
+                }
+                .dropdown-menu .dropdown-menu {
+                    margin-left: 0;
+                    margin-right: 0;
+                }
+                .dropdown-menu li {
+                    position: relative;
+                }
+                .nav-item .submenu {
+                    display: none;
+                    position: flex;
+                    left: 0;
+                    top: 100%;
+                }
+                .nav-item .submenu-left {
+                    right: 100%;
+                    left: auto;
+                }
+                .dropdown-menu > li:hover {
+                    background-color: #f1f1f1
+                }
+                .dropdown-menu > li:hover > .submenu {
+                    display: block;
+                }
+
+            }
+        </style>
+
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
     <body class="font-sans antialiased">
         <x-jet-banner />
 
-        <div class="min-h-screen bg-gray-100">
-            @livewire('navigation-menu')
+        <div class="min-h-screen">
 
             <!-- Page Heading -->
             @if (isset($header))
@@ -53,5 +125,26 @@
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
     <script src="https://unpkg.com/bootstrap-table@1.18.0/dist/bootstrap-table.min.js"></script>
+    <script>
+
+        // Prevent closing from click inside dropdown
+    $(document).on('click', '.dropdown-menu', function (e) {
+    e.stopPropagation();
+    });
+
+    // make it as accordion for smaller screens
+    if ($(window).width() < 992) {
+    $('.dropdown-menu a').click(function (e) {
+    e.preventDefault();
+    if ($(this).next('.submenu').length) {
+    $(this).next('.submenu').toggle();
+    }
+    $('.dropdown').on('hide.bs.dropdown', function () {
+    $(this).find('.submenu').hide();
+    })
+    });
+    }
+    </script>
+
     </body>
 </html>

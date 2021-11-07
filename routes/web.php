@@ -15,22 +15,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
-    $microframework = Repository::where('name','microframework')->get();
-    $paymentservice = Repository::where('name','paymentservice')->get();
-    $hub = Repository::where('name','hub')->get();
-    $pagos = Repository::where('name','pgs')->get();
-    $repos = Repository::all()->pluck('name')->unique();
-    $partitions = Repository::all()->pluck('partition')->unique();
+    Route::get('/', function (){
+        return view('welcome');
+    });
 
-    return view('welcome', ['repos' => $repos, 'partitions' => $partitions]);
+    Route::get('/{repository}/{partition}', function($repository, $partition){
+        $prod = Repository::where('name', $repository)->where('partition', $partition)->whereIn('env',['prd','cross'])->get();
+        $uat = Repository::where('name', $repository)->where('partition', $partition)->whereIn('env',['uat','pre','tst'])->get();
+        return view('table', compact('prod','uat','repository','partition'));
+    });
+
+    Route::get('/jira', function (){
+        return view('jira');
+    });
+
 });
-
-Route::get('/jira', function (){
-    return view('jira');
-});
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
