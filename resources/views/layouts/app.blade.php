@@ -108,10 +108,19 @@
                 </header>
             @endif
 
+            <!-- Navbar -->
+
+            @include('partials.navbar')
+
             <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+            <div class="row">
+                <div class="col-lg-1"></div>
+                  <div class="col-lg-10">
+                    {{ $slot }}
+                  </div>
+                  <div class="col-lg-1"></div>
+              </div>
+
         </div>
 
         @stack('modals')

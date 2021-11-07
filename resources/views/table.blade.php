@@ -1,16 +1,14 @@
 
 <x-app-layout>
 
-    @include('partials.navbar')
-
 <header class="masthead text-center text-light">
     <div class="masthead-content">
-        <div class="container">
-            <h1 class="masthead-heading mb-0">{{$repository}}</h1>
-            <h2 class="masthead-subheading mb-0">{{$partition}}</h2>
+        <div class="container mt-3">
+            <h1 class="h1">{{Str::ucfirst($repository)}}</h1>
+            <h2 class="h2">{{Str::ucfirst($partition)}}</h2>
         </div>
         <div class="container">
-            <a href='urlJenkins' class="btn btn-dark mt-5">Jenkins</a>
+            <a href='http://ci.dlatv.net:8080/view/Service_Deploy/job/Service_Deploy_{{$repository}}_{{$partition}}' class="btn btn-dark mt-5">Jenkins</a>
         </div>
     </div>
 </header>
