@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Jira;
 use App\Models\Repository;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -28,7 +29,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     });
 
     Route::get('/jira', function (){
-        return view('jira');
+        $programadas = Jira::where('emergent', 0)->whereNotIn('status', [2,3,6])->get();
+        $emergentes = Jira::where('emergent', 1)->whereNotIn('status', [2,3,6])->get();
+        return view('jiratable', compact('programadas','emergentes'));
     });
 
 });
