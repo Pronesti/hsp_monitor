@@ -1,7 +1,7 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            HSP Monitor
+            <div class="text-white">HSP MONITOR</div>
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
