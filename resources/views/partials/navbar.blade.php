@@ -14,10 +14,10 @@
                 <a href="/jira" class="btn btn-dark">Jira</a>
             </li>
             <li class="nav-item">
-                <a href="https://one.newrelic.com/launcher/dashboards.launcher?pane=eyJuZXJkbGV0SWQiOiJkYXNoYm9hcmRzLmRhc2hib2FyZCIsImVudGl0eUlkIjoiTmpjMU5EVXlmRlpKV254RVFWTklRazlCVWtSOE1UTTVNekF6TWciLCJ1c2VEZWZhdWx0VGltZVJhbmdlIjpmYWxzZSwiaXNUZW1wbGF0ZUVtcHR5IjpmYWxzZX0=&platform[$isFallbackTimeRange]=false" class="btn btn-dark">New Relic</a>
+                <a target="_blank" href="https://one.newrelic.com/launcher/dashboards.launcher?pane=eyJuZXJkbGV0SWQiOiJkYXNoYm9hcmRzLmRhc2hib2FyZCIsImVudGl0eUlkIjoiTmpjMU5EVXlmRlpKV254RVFWTklRazlCVWtSOE1UTTVNekF6TWciLCJ1c2VEZWZhdWx0VGltZVJhbmdlIjpmYWxzZSwiaXNUZW1wbGF0ZUVtcHR5IjpmYWxzZX0=&platform[$isFallbackTimeRange]=false" class="btn btn-dark">New Relic</a>
             </li>
             <li class="nav-item">
-                <a href="http://10.9.1.110:9000/dashboard?id=CMS_GO_PROVIDERS" class="btn btn-dark">SonarQube</a>
+                <a target="_blank" href="http://10.9.1.110:9000/dashboard?id=CMS_GO_PROVIDERS" class="btn btn-dark">SonarQube</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-white" href="#" data-toggle="dropdown">
