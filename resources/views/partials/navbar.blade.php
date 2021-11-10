@@ -15,6 +15,14 @@
             </li>
             <li class="nav-item">
                 <a target="_blank" href="https://one.newrelic.com/launcher/dashboards.launcher?pane=eyJuZXJkbGV0SWQiOiJkYXNoYm9hcmRzLmRhc2hib2FyZCIsImVudGl0eUlkIjoiTmpjMU5EVXlmRlpKV254RVFWTklRazlCVWtSOE1UTTVNekF6TWciLCJ1c2VEZWZhdWx0VGltZVJhbmdlIjpmYWxzZSwiaXNUZW1wbGF0ZUVtcHR5IjpmYWxzZX0=&platform[$isFallbackTimeRange]=false" class="btn btn-dark">New Relic</a>
+                <ul class="submenu dropdown-menu">
+                    <li>
+                        <a class="dropdown-item" href=" https://one.newrelic.com/launcher/dashboards.launcher?platform[$isFallbackTimeRange]=false&pane=eyJuZXJkbGV0SWQiOiJkYXNoYm9hcmRzLmRldGFpbCIsInVzZURlZmF1bHRUaW1lUmFuZ2UiOmZhbHNlLCJzZWxlY3RlZFBhZ2UiOiJOamMxTkRVeWZGWkpXbnhFUVZOSVFrOUJVa1I4TVRNNE5qUXpPUSIsImlzVGVtcGxhdGVFbXB0eSI6ZmFsc2UsImVudGl0eUd1aWQiOiJOamMxTkRVeWZGWkpXbnhFUVZOSVFrOUJVa1I4TVRNNE5qUXpPUSJ9&state=38138f1d-d26f-b540-4e10-6815cb93f88f">Global EAST</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="https://one.newrelic.com/launcher/dashboards.launcher?platform[$isFallbackTimeRange]=false&pane=eyJuZXJkbGV0SWQiOiJkYXNoYm9hcmRzLmRldGFpbCIsInVzZURlZmF1bHRUaW1lUmFuZ2UiOmZhbHNlLCJzZWxlY3RlZFBhZ2UiOiJOamMxTkRVeWZGWkpXbnhFUVZOSVFrOUJVa1I4TVRNNE5qUXpPUSIsImlzVGVtcGxhdGVFbXB0eSI6ZmFsc2UsImVudGl0eUd1aWQiOiJOamMxTkRVeWZGWkpXbnhFUVZOSVFrOUJVa1I4TVRNNE5qUXpPUSJ9&state=38138f1d-d26f-b540-4e10-6815cb93f88f">Global WEST</a>
+                    </li>
+                </ul>
             </li>
             <li class="nav-item">
                 <a target="_blank" href="http://10.11.186.249:9000/projects?sort=-analysis_date" class="btn btn-dark">SonarQube</a>
