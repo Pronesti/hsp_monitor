@@ -79,6 +79,12 @@
     </table>
 </table>
 
+@if($prod->count() > 0)
+<div class="d-flex flex-row-reverse mt-3">
+ <a target="_self" href="/csv/{{$repository}}/{{$partition}}/prod" class="btn btn-warning">Descargar CSV</a>
+</div>
+@endif
+
 <div class="alert alert-dark text-center mt-3" role="alert">
     UAT
 </div>
@@ -142,5 +148,9 @@
            @endforeach
         </table>
     </table>
-
+    @if($uat->count() > 0)
+    <div class="d-flex flex-row-reverse mt-3">
+     <a target="_self" href="/csv/{{$repository}}/{{$partition}}/uat" class="btn btn-warning">Descargar CSV</a>
+    </div>
+    @endif
 </x-app-layout>
