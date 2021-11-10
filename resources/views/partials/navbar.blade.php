@@ -1,6 +1,20 @@
 @php
     $repos = App\Models\Repository::all()->pluck('name')->unique();
     $partitions = App\Models\Repository::all()->pluck('partition')->unique();
+    $newRelic = [
+        'Global' => 'https://one.newrelic.com/launcher/dashboards.launcher?platform[$isFallbackTimeRange]=false&pane=eyJuZXJkbGV0SWQiOiJkYXNoYm9hcmRzLmRldGFpbCIsInVzZURlZmF1bHRUaW1lUmFuZ2UiOmZhbHNlLCJzZWxlY3RlZFBhZ2UiOiJOamMxTkRVeWZGWkpXbnhFUVZOSVFrOUJVa1I4TVRNNU1qYzVOUSIsImlzVGVtcGxhdGVFbXB0eSI6ZmFsc2UsImVudGl0eUd1aWQiOiJOamMxTkRVeWZGWkpXbnhFUVZOSVFrOUJVa1I4TVRNNU1qYzVOUSJ9&state=4bf9c002-f7b8-efde-3bda-88629e7a484b',
+        'Global EAST' => 'https://one.newrelic.com/launcher/dashboards.launcher?platform[$isFallbackTimeRange]=false&pane=eyJuZXJkbGV0SWQiOiJkYXNoYm9hcmRzLmRldGFpbCIsInVzZURlZmF1bHRUaW1lUmFuZ2UiOmZhbHNlLCJzZWxlY3RlZFBhZ2UiOiJOamMxTkRVeWZGWkpXbnhFUVZOSVFrOUJVa1I4TVRNNE5qUXpPUSIsImlzVGVtcGxhdGVFbXB0eSI6ZmFsc2UsImVudGl0eUd1aWQiOiJOamMxTkRVeWZGWkpXbnhFUVZOSVFrOUJVa1I4TVRNNE5qUXpPUSJ9&state=38138f1d-d26f-b540-4e10-6815cb93f88f',
+        'Global WEST' => 'https://one.newrelic.com/launcher/dashboards.launcher?platform[$isFallbackTimeRange]=false&pane=eyJuZXJkbGV0SWQiOiJkYXNoYm9hcmRzLmRldGFpbCIsInVzZURlZmF1bHRUaW1lUmFuZ2UiOmZhbHNlLCJzZWxlY3RlZFBhZ2UiOiJOamMxTkRVeWZGWkpXbnhFUVZOSVFrOUJVa1I4TVRNNE5qUXpPUSIsImlzVGVtcGxhdGVFbXB0eSI6ZmFsc2UsImVudGl0eUd1aWQiOiJOamMxTkRVeWZGWkpXbnhFUVZOSVFrOUJVa1I4TVRNNE5qUXpPUSJ9&state=38138f1d-d26f-b540-4e10-6815cb93f88f',
+        'Cenam' => 'https://one.newrelic.com/launcher/dashboards.launcher?platform[$isFallbackTimeRange]=false&pane=eyJuZXJkbGV0SWQiOiJkYXNoYm9hcmRzLmRldGFpbCIsInVzZURlZmF1bHRUaW1lUmFuZ2UiOmZhbHNlLCJzZWxlY3RlZFBhZ2UiOiJOamMxTkRVeWZGWkpXbnhFUVZOSVFrOUJVa1I4TVRNNU1qazRNdyIsImlzVGVtcGxhdGVFbXB0eSI6ZmFsc2UsImVudGl0eUd1aWQiOiJOamMxTkRVeWZGWkpXbnhFUVZOSVFrOUJVa1I4TVRNNU1qazRNdyJ9&state=1d8832ba-2a87-4925-22b0-028bfc82dd9c',
+        'Cenam EAST' => 'https://one.newrelic.com/launcher/dashboards.launcher?platform[$isFallbackTimeRange]=false&pane=eyJuZXJkbGV0SWQiOiJkYXNoYm9hcmRzLmRldGFpbCIsInVzZURlZmF1bHRUaW1lUmFuZ2UiOmZhbHNlLCJzZWxlY3RlZFBhZ2UiOiJOamMxTkRVeWZGWkpXbnhFUVZOSVFrOUJVa1I4TVRNNU1qa3pPUSIsImlzVGVtcGxhdGVFbXB0eSI6ZmFsc2UsImVudGl0eUd1aWQiOiJOamMxTkRVeWZGWkpXbnhFUVZOSVFrOUJVa1I4TVRNNU1qa3pPUSJ9&state=53c7d65a-b7d0-a752-66a2-49efdb3b82b8',
+        'Cenam WEST' => 'https://one.newrelic.com/launcher/dashboards.launcher?platform[$isFallbackTimeRange]=false&pane=eyJuZXJkbGV0SWQiOiJkYXNoYm9hcmRzLmRldGFpbCIsInVzZURlZmF1bHRUaW1lUmFuZ2UiOmZhbHNlLCJzZWxlY3RlZFBhZ2UiOiJOamMxTkRVeWZGWkpXbnhFUVZOSVFrOUJVa1I4TVRNNU16QXdOZyIsImlzVGVtcGxhdGVFbXB0eSI6ZmFsc2UsImVudGl0eUd1aWQiOiJOamMxTkRVeWZGWkpXbnhFUVZOSVFrOUJVa1I4TVRNNU16QXdOZyJ9&state=9ccc3073-c782-60c0-b740-4c818b5073a8',
+        'Bnet' => 'https://one.newrelic.com/launcher/dashboards.launcher?platform[$isFallbackTimeRange]=false&pane=eyJuZXJkbGV0SWQiOiJkYXNoYm9hcmRzLmRldGFpbCIsInVzZURlZmF1bHRUaW1lUmFuZ2UiOmZhbHNlLCJzZWxlY3RlZFBhZ2UiOiJOamMxTkRVeWZGWkpXbnhFUVZOSVFrOUJVa1I4TVRNNU16QTBNUSIsImlzVGVtcGxhdGVFbXB0eSI6ZmFsc2UsImVudGl0eUd1aWQiOiJOamMxTkRVeWZGWkpXbnhFUVZOSVFrOUJVa1I4TVRNNU16QTBNUSJ9&state=ba6fe834-5110-0b81-36bb-89b0e96ec500',
+        'Bnet EAST' => 'https://one.newrelic.com/launcher/dashboards.launcher?platform[$isFallbackTimeRange]=false&pane=eyJuZXJkbGV0SWQiOiJkYXNoYm9hcmRzLmRldGFpbCIsImlzVGVtcGxhdGVFbXB0eSI6ZmFsc2UsInNlbGVjdGVkUGFnZSI6Ik5qYzFORFV5ZkZaSldueEVRVk5JUWs5QlVrUjhNVE01TXpBek1nIiwiZW50aXR5R3VpZCI6Ik5qYzFORFV5ZkZaSldueEVRVk5JUWs5QlVrUjhNVE01TXpBek1nIn0=&state=e9086f41-6fd9-beb4-4f94-aa7f9ff7ad4f',
+        'Bnet WEST' => 'https://one.newrelic.com/launcher/dashboards.launcher?platform[$isFallbackTimeRange]=false&pane=eyJuZXJkbGV0SWQiOiJkYXNoYm9hcmRzLmRldGFpbCIsInVzZURlZmF1bHRUaW1lUmFuZ2UiOmZhbHNlLCJzZWxlY3RlZFBhZ2UiOiJOamMxTkRVeWZGWkpXbnhFUVZOSVFrOUJVa1I4TVRNNU16QTFNQSIsImlzVGVtcGxhdGVFbXB0eSI6ZmFsc2UsImVudGl0eUd1aWQiOiJOamMxTkRVeWZGWkpXbnhFUVZOSVFrOUJVa1I4TVRNNU16QTFNQSJ9&state=2080567c-848a-34ba-7b62-0c57f6d19648',
+        'Andina' => 'https://one.newrelic.com/launcher/dashboards.launcher?platform[$isFallbackTimeRange]=false&pane=eyJuZXJkbGV0SWQiOiJkYXNoYm9hcmRzLmRldGFpbCIsInVzZURlZmF1bHRUaW1lUmFuZ2UiOmZhbHNlLCJzZWxlY3RlZFBhZ2UiOiJOamMxTkRVeWZGWkpXbnhFUVZOSVFrOUJVa1I4TVRNNU16YzFNUSIsImlzVGVtcGxhdGVFbXB0eSI6ZmFsc2UsImVudGl0eUd1aWQiOiJOamMxTkRVeWZGWkpXbnhFUVZOSVFrOUJVa1I4TVRNNU16YzFNUSJ9&state=f3d4bc09-0409-8d84-5cb6-36827e677810',
+        'Andina EAST' => 'https://one.newrelic.com/launcher/dashboards.launcher?platform[$isFallbackTimeRange]=false&pane=eyJuZXJkbGV0SWQiOiJkYXNoYm9hcmRzLmRldGFpbCIsInVzZURlZmF1bHRUaW1lUmFuZ2UiOmZhbHNlLCJzZWxlY3RlZFBhZ2UiOiJOamMxTkRVeWZGWkpXbnhFUVZOSVFrOUJVa1I4TVRNNU16YzBOUSIsImlzVGVtcGxhdGVFbXB0eSI6ZmFsc2UsImVudGl0eUd1aWQiOiJOamMxTkRVeWZGWkpXbnhFUVZOSVFrOUJVa1I4TVRNNU16YzBOUSJ9&state=03aa2d6e-ea89-f1ad-0671-5e0bcee287d8',
+        'Andina WEST' => 'https://one.newrelic.com/launcher/dashboards.launcher?platform[$isFallbackTimeRange]=false&pane=eyJuZXJkbGV0SWQiOiJkYXNoYm9hcmRzLmRldGFpbCIsInVzZURlZmF1bHRUaW1lUmFuZ2UiOmZhbHNlLCJzZWxlY3RlZFBhZ2UiOiJOamMxTkRVeWZGWkpXbnhFUVZOSVFrOUJVa1I4TVRNNU16a3hPQSIsImlzVGVtcGxhdGVFbXB0eSI6ZmFsc2UsImVudGl0eUd1aWQiOiJOamMxTkRVeWZGWkpXbnhFUVZOSVFrOUJVa1I4TVRNNU16a3hPQSJ9&state=f4eb5efb-5f92-0c5a-792c-a32d411fb59a',
+    ];
 @endphp
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100">
     <a class="navbar-brand" href="/">Monitor</a>
@@ -14,7 +28,19 @@
                 <a href="/jira" class="btn btn-dark">Jira</a>
             </li>
             <li class="nav-item">
-                <a target="_blank" href="https://one.newrelic.com/launcher/dashboards.launcher?pane=eyJuZXJkbGV0SWQiOiJkYXNoYm9hcmRzLmRhc2hib2FyZCIsImVudGl0eUlkIjoiTmpjMU5EVXlmRlpKV254RVFWTklRazlCVWtSOE1UTTVNekF6TWciLCJ1c2VEZWZhdWx0VGltZVJhbmdlIjpmYWxzZSwiaXNUZW1wbGF0ZUVtcHR5IjpmYWxzZX0=&platform[$isFallbackTimeRange]=false" class="btn btn-dark">New Relic</a>
+
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-white" href="#" data-toggle="dropdown">
+                    New Relic
+                </a>
+                <ul class="dropdown-menu">
+                    @foreach($newRelic as $name => $url)
+                        <li>
+                            <a target="_blank" href="{{$url}}" class="dropdown-item">{{$name}}</a>
+                        </li>
+                    @endforeach
+                </ul>
             </li>
             <li class="nav-item">
                 <a target="_blank" href="http://10.9.1.110:9000/dashboard?id=CMS_GO_PROVIDERS" class="btn btn-dark">SonarQube</a>
@@ -36,12 +62,12 @@
                                         <a class="dropdown-item" href="/{{$repo}}/{{$partition}}">{{$partition}}</a>
                                     </li>
                                 @endforeach
-                            </li>
+                            </ul>
                         </li>
-                    </ul>
+
                 @endforeach
+                </ul>
             </li>
-        </ul>
     </div>
     <div>
         <li class="navbar nav-item">
