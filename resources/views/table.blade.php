@@ -8,7 +8,7 @@
             <h2 class="h2">{{Str::ucfirst($partition)}}</h2>
         </div>
         <div class="container">
-            <a href='http://ci.dlatv.net:8080/view/Service_Deploy/job/Service_Deploy_{{$repository}}_{{$partition}}' class="btn btn-dark mt-5">Jenkins</a>
+            <a href='http://ci.dlatv.net:8080/' class="btn btn-dark mt-5">Jenkins</a>
         </div>
     </div>
 </header>
